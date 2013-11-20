@@ -3,6 +3,7 @@
 
 import sys
 from types import *
+import ana
 
 class Objeto():
 	def __init__(self, tam):
@@ -22,10 +23,11 @@ class Envase():
 		self.count=0
 
 	def __str__(self):
-		s = "["
-		for i in self._list:
-			s += "%s, " % i
-		s += "]"
+		s = "{"
+		s += "%s" % self._list[0]
+		for i in self._list[1:]:
+			s+= ";%s" % i
+		s += "}"
 		return s
 
 	def envasar(self, obj):
@@ -35,17 +37,44 @@ class Envase():
 			return True
 		else:
 			return False
+"""
+Dada una lista de objetos, crea todas las 
+permutaciones posibles
+"""			
+def brutus(l):
+	n=len(l)
+	r=[]
+	for i in range(n):
+		r.append(str(i))
+	res=ana.ana(r)
+	(e,c)=(None,None)
+	for i in res:
+		aux=[]
+		for j in i:
+			aux.append(l[int(j)])
+		x=aprox(aux)
+		if (x[1]<c)or(c is None):
+			c=x[1]
+			e=x[0]
+	return (e,c)
 
+"""
+El algoritmo de aproximacion recibe como parametro
+una lista que contiene los objetos a envasar
+O(n)
+"""
 def aprox(l):
 	r=[]
 	e=Envase()
+	count=1
 	for obj in l:
 		if not e.envasar(obj):
 			r.append(e)
 			e=Envase() #Se abre otro envase
+			count+=1
 			e.envasar(obj)
 	r.append(e)
-	return r
+	return (r,count)
 
 def loadFile():
 	try:
@@ -84,8 +113,17 @@ def main():
 	l=loadFile()
 	if not l:
 		return
-	r = aprox(l)
-	for l in r:
-		print l
+	print "Solucion aproximada"
+	(r,c) = aprox(l)
+	for e in r:
+		print e
+	print "Son %s envaces" % c
+
+	print "Solucion exacta"
+	(r,c)= brutus(l)
+	for e in r:
+		print e
+	print "Son %s envaces" % c
+
 if __name__ == '__main__':
 	main()
