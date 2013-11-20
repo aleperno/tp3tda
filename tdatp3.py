@@ -4,6 +4,7 @@
 import sys
 from types import *
 import ana
+import time
 
 class Objeto():
 	def __init__(self, tam):
@@ -113,17 +114,23 @@ def main():
 	l=loadFile()
 	if not l:
 		return
+	start=time.time()
 	print "Solucion aproximada"
 	(r,c) = aprox(l)
 	for e in r:
 		print e
 	print "Son %s envaces" % c
+	elapsed=time.time()-start
+	print "time elapsed %s seconds" % elapsed
 
+	start=time.time()
 	print "Solucion exacta"
 	(r,c)= brutus(l)
 	for e in r:
 		print e
 	print "Son %s envaces" % c
+	elapsed=time.time()-start
+	print "time elapsed %s seconds" % elapsed
 
 if __name__ == '__main__':
 	main()
