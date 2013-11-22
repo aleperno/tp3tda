@@ -6,6 +6,7 @@ from types import *
 import ana
 import time
 import itertools
+from multiprocessing import *
 
 class Objeto():
 	def __init__(self, tam):
@@ -39,17 +40,12 @@ class Envase():
 			return True
 		else:
 			return False
-"""
-Dada una lista de objetos, crea todas las 
-permutaciones posibles
-"""			
-def brutus(l):
-	n=len(l)
-	gen=itertools.permutations(l)
+
+def aux(gen):
 	(e,c)=(None,None)
 	while True:
 		try:
-			aux=gen.next() 
+			aux=gen.next()
 		except StopIteration:
 			break
 		x=aprox(aux)
@@ -57,6 +53,34 @@ def brutus(l):
 			c=x[1]
 			e=x[0]
 	return (e,c)
+"""
+Dada una lista de objetos, crea todas las 
+permutaciones posibles
+"""			
+def brutus(l):
+	q = Queue()
+	n=len(l)
+	gen=itertools.permutations(l)
+	(e,c)=(None,None)
+	p1 = Process(target=aux1, args=(q,gen))
+	p2 = Process(target=aux1, args=(q,gen))
+	p3 = Process(target=aux1, args=(q,gen))
+	p1.start()
+	p2.start()
+	p3.start()
+	x = q.get()
+	y = q.get()
+	z = q.get()
+	m = min(x[1],y[1],z[1])
+	if m is x[1]:
+		return x
+	elif m is y[1]:
+		return y
+	else:
+		return z
+
+def aux1(q,gen):
+	q.put(aux(gen))
 
 """
 El algoritmo de aproximacion recibe como parametro

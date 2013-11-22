@@ -5,6 +5,7 @@ import sys
 from types import *
 import ana
 import time
+import itertools
 
 class Objeto():
 	def __init__(self, tam):
@@ -44,15 +45,13 @@ permutaciones posibles
 """			
 def brutus(l):
 	n=len(l)
-	r=[]
-	for i in range(n):
-		r.append(str(i))
-	res=ana.ana(r)
+	gen=itertools.permutations(l)
 	(e,c)=(None,None)
-	for i in res:
-		aux=[]
-		for j in i:
-			aux.append(l[int(j)])
+	while True:
+		try:
+			aux=gen.next() 
+		except StopIteration:
+			break
 		x=aprox(aux)
 		if (x[1]<c)or(c is None):
 			c=x[1]
