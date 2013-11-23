@@ -114,7 +114,7 @@ def runBrutus(l):
 		print e
 	print "Son %s envaces" % c
 	elapsed=time.time()-start
-	print "time elapsed %s seconds" % elapsed
+	print "time elapsed %s ms" % (elapsed*1000)
 
 def runAprox(l):
 	start=time.time()
@@ -124,7 +124,7 @@ def runAprox(l):
 		print e
 	print "Son %s envaces" % c
 	elapsed=time.time()-start
-	print "time elapsed %s seconds" % elapsed
+	print "time elapsed %s ms" % (elapsed*1000)
 
 
 def main():
