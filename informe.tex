@@ -101,7 +101,7 @@
 		 otro modo, tendriamos que usar ese subconjunto en el primer envase y los
 		 $\frac{W}{2}$ items en el segundo envase obteniendo una solución de 2 envases.
 	
-	\subsection{Fuerza Bruta}
+	\subsection{Analisis Fuerza Bruta}
 		La resolución por fuerza bruta, implica probar todas las combinaciones 
 		posibles y de ellas obtener la que implique el menor uso de envases.
 		El enfoque que se utiliza en este TP, es por cada combinación posible
@@ -148,7 +148,16 @@
 		\includegraphics{graf.png}
 	\end{center} 
 		Aunque en el gráfico no se aprecie con exactitud, en la tabla es
-		apreciable como los tiempos crecen factorialmente
+		apreciable como los tiempos crecen factorialmente con una forma 
+		aproximada a $t(n)=n*t(n-1)$.
+	
+	\newpage	
+	
+	\subsection{Analisis Aproximacion}
+		Para analizar que tan buena es la aproximacion, se busca una cota
+		$r(A)$ tal que $\displaystyle \frac{A(I)}{Z(I)} \leq r(A)$ $\forall I$ 
+		instancia del problema.
+	
 \newpage
 \section{Analisis de Orden}\label{sec:orden}		
 		

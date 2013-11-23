@@ -1,6 +1,7 @@
 \select@language {spanish}
 \contentsline {section}{\numberline {1}Resolucion}{6}{section.1}
 \contentsline {subsection}{\numberline {1.1}Demostraci\IeC {\'o}n NP-Completo}{6}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Fuerza Bruta}{7}{subsection.1.2}
-\contentsline {section}{\numberline {2}Analisis de Orden}{9}{section.2}
-\contentsline {section}{\numberline {3}Codigo Fuente}{10}{section.3}
+\contentsline {subsection}{\numberline {1.2}Analisis Fuerza Bruta}{7}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Analisis Aproximacion}{9}{subsection.1.3}
+\contentsline {section}{\numberline {2}Analisis de Orden}{10}{section.2}
+\contentsline {section}{\numberline {3}Codigo Fuente}{11}{section.3}
