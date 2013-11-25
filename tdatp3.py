@@ -3,7 +3,6 @@
 
 import sys
 from types import *
-import ana
 import time
 import itertools
 
@@ -42,17 +41,18 @@ class Envase():
 """
 Dada una lista de objetos, crea todas las 
 permutaciones posibles
+O(n* n!)
 """			
 def brutus(l):
 	n=len(l)
 	gen=itertools.permutations(l)
 	(e,c)=(None,None)
-	while True:
+	while True: #O(n!)
 		try:
 			aux=gen.next() 
 		except StopIteration:
 			break
-		x=aprox(aux)
+		x=aprox(aux) #O(n)
 		if (x[1]<c)or(c is None):
 			c=x[1]
 			e=x[0]
@@ -67,7 +67,7 @@ def aprox(l):
 	r=[]
 	e=Envase()
 	count=1
-	for obj in l:
+	for obj in l: #O(n)
 		if not e.envasar(obj):
 			r.append(e)
 			e=Envase() #Se abre otro envase
@@ -112,7 +112,7 @@ def runBrutus(l):
 	(r,c)= brutus(l)
 	for e in r:
 		print e
-	print "Son %s envaces" % c
+	print "Son %s envases" % c
 	elapsed=time.time()-start
 	print "time elapsed %s ms" % (elapsed*1000)
 
@@ -122,12 +122,15 @@ def runAprox(l):
 	(r,c) = aprox(l)
 	for e in r:
 		print e
-	print "Son %s envaces" % c
+	print "Son %s envases" % c
 	elapsed=time.time()-start
 	print "time elapsed %s ms" % (elapsed*1000)
 
 
 def main():
+	print "Teoria de Algoritmos 1 - [75.29]"
+	print "TP3 - Problema del Empaquetamiento"
+	print "Autores: Alejandro Pernin (92216)\n"
 	l=None
 	if not checkArgs():
 		return

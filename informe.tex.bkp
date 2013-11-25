@@ -65,22 +65,41 @@
 		ya conocida; reduciendo dicho conocido problema al problema de
 		Bin Packing, demostramos que el problema también es NP.
 		
-		Como problema de referencia se utilizar\'a \emph{Subset Sum}\footnote{\url{http://en.wikipedia.org/wiki/Subset_sum_problem}}:
+		Como problema de referencia se utilizar\'a \emph{Subset Sum}\footnote{\url{http://en.wikipedia.org/wiki/Subset_sum_problem}}.
+		Primero definamos ambos problemas como problemas de decisión:
 		\begin{itemize}
-			\item Sea un conjunto $S$ de números, hallar (de haber) un conjunto 
-			$S'\subseteq S$ tal que la suma de todos los elementos en $S'$
-			sea exactamente $t$.
+			\item \underline{Bin Packing}: $\{ <S,j> | S = \{ s_{1},s_{2}...,s_{n}\}; 0<s_{i}<1,$ 
+			y todos los objetos $1,...,n$ deben empaquetarse en envases de capacidad $j$.
+			
+			\item \underline{Subset Sum}: $\{ <C,k> | C = \{ c_{1},c_{2}...,c_{n}\}$ donde $c_{i}$
+			es un entero positivo, y existe algun subconjunto $C'\subseteq C$ tal que la suma de sus
+			elementos sume exactamente $k$.
 		\end{itemize}
 		
-		Sea $T$ la suma de todos los números del conjunto $S$, consideramos
-		el caso $t=\frac{T}{2}$, esto es $<S,\frac{T}{2}>$. Construyendo
-		una instancia de \emph{Bin Packing} dividiendo cada elemento de 
-		$S$ por $T/2$, la instancia $<C,2>$ donde los elementos de $C$ pueden
-		almacenarse en dos envases de tamaño $1$. Si existe un subconjunto
-		$S'\subseteq S$ tal que la sumatoria de todos los elementos de $S'$
-		sea exactamente $T/2$, Los elementos de $C$ correspondientes a $S'$
-		pueden almacenarse en un envase, y los restantes pertenecientes a $S-S'$
-		en el otro.
+		Se considera demostrado y sabido que \emph{Subset Sum} es NP-Completo, 
+		por medio de reducción demostraremos que \emph{Bin Packing} también lo es.
+		Primero consideramos que \emph{Subset Sum} es NP-Completo aún en un caso restringido:
+			\\ 
+			
+			$k=\sum_{c_{i}\in C}^{n} c_{i}/2 = W/2$
+			
+		Llamamos a esta instancia \emph{Subset Half Sum}, instancia que
+		se demostrará se soluciona facilmente con \emph{Bin Packing}. Para
+		ello mostramos que una instancia $<C,k>$ de \emph{Subset Half Sum}
+		$\leq p$ \emph{Bin Packing} \footnote{Notación ver: Algorithm Desing - Chapter 8, page 452}.
+		Primero se convierten los elementos en $C$ a un problema de \emph{Bin Packing}
+		de $1$ envase dividiendo los elementos en $C$ por $k$. Eso es, para $C=\{c_{1},c_{2},...,c_{n}\}$
+		crear $C'=\{ s_{i} |  s_{i}=c_{i}/k\}$. Creamos una instancia
+		$<C',2>$ de \emph{Bin Packing}. Si la respuesta a este \emph{Bin Packing}
+		es "si", también lo será para \emph{Subset Half Sum}, de lo contrario "no".
+		\\
+	
+		Prueba: Si el mínimo de envases es 2 y cada envase tiene capacidad $\frac{W}{2k}$,
+		 entonces cada uno contiene un subconjunto de peso esactamente $\frac{W}{2k}$, y
+		 cada uno es una solución a \emph{Subset Half Sum}. Si el mínimo de envases
+		 es mayor a 2(no puede ser 1 ya que $1<W/k$), no existe ningún subconjunto de peso $\frac{W}{2k}$. De 
+		 otro modo, tendriamos que usar ese subconjunto en el primer envase y los
+		 $\frac{W}{2}$ items en el segundo envase obteniendo una solución de 2 envases.
 	
 	\subsection{Analisis Fuerza Bruta}
 		La resolución por fuerza bruta, implica probar todas las combinaciones 
