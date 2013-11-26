@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.12.5)  25 NOV 2013 05:09
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.12.5)  25 NOV 2013 15:49
 entering extended mode
  file:line:error style messages enabled.
  %&-line parsing enabled.
@@ -795,10 +795,10 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 ) (./testaprox.sh)
 (./testexact.sh) (./testcomp.sh) [19] (./informe.aux) ) 
 Here is how much of TeX's memory you used:
- 9823 strings out of 495061
- 135629 string characters out of 1182621
+ 9822 strings out of 495061
+ 135623 string characters out of 1182621
  299152 words of memory out of 3000000
- 12582 multiletter control sequences out of 15000+50000
+ 12581 multiletter control sequences out of 15000+50000
  13732 words of font info for 54 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,16n,48p,264b,1848s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -815,7 +815,7 @@ s/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.
 pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/s
 hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-
 texlive/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on informe.pdf (19 pages, 413326 bytes).
+Output written on informe.pdf (19 pages, 413539 bytes).
 PDF statistics:
  552 PDF objects out of 1000 (max. 8388607)
  236 named destinations out of 1000 (max. 500000)

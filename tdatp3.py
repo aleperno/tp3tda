@@ -46,17 +46,17 @@ O(n* n!)
 def brutus(l):
 	n=len(l)
 	gen=itertools.permutations(l)
-	(e,c)=(None,None)
+	(r,count)=(None,None)
 	while True: #O(n!)
 		try:
 			aux=gen.next() 
 		except StopIteration:
 			break
-		x=aprox(aux) #O(n)
-		if (x[1]<c)or(c is None):
-			c=x[1]
-			e=x[0]
-	return (e,c)
+		(e,c)=aprox(aux) #O(n)
+		if (c<count)or(count is None):
+			count=c
+			r=e
+	return (r,count)
 
 """
 El algoritmo de aproximacion recibe como parametro
@@ -85,7 +85,7 @@ def loadFile():
 		return False
 	l=[]
 	n=_file.readline().replace('\n','')
-	n=int(n)
+	n=int(n) #???
 	_file.readline() #Linea en blanco
 	for line in _file:
 		tam=line.replace('\n','').replace(',','.')
