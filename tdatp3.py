@@ -53,9 +53,7 @@ def brutus(l):
 		except StopIteration:
 			break
 		(e,c)=aprox(aux) #O(n)
-		if (c<count)or(count is None):
-			count=c
-			r=e
+		(r,count) = (e,c) if (c<count or count is None) else (r,count)
 	return (r,count)
 
 """
